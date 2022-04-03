@@ -1,0 +1,1378 @@
+<!DOCTYPE html><html><head><title>File Encryption &amp; Decryption - Simple, fast, secure client-side file encryption</title><link rel="icon" href="/favicon.ico"/><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content="Encrypt and Decrypt files securely in your browser."/><meta name="Keywords" content="encrypt decrypt encryption file-encryption javascript client-side serverless decryption xchcha20 argon2id encryption-decryption webcrypto crypto browser in-browser"/><meta name="theme-color" content="#1c1c1c" media="(prefers-color-scheme: dark)"/><meta name="next-head-count" content="7"/><link rel="preload" href="/_next/static/css/ad8172df0ff7f2ff.css" as="style"/><link rel="stylesheet" href="/_next/static/css/ad8172df0ff7f2ff.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-5cd94c89d3acac5f.js"></script><script src="/_next/static/chunks/webpack-5752944655d749a0.js" defer=""></script><script src="/_next/static/chunks/framework-5f4595e5518b5600.js" defer=""></script><script src="/_next/static/chunks/main-c3b6816b38c7fbf8.js" defer=""></script><script src="/_next/static/chunks/pages/_app-30cd661e7a08d42a.js" defer=""></script><script src="/_next/static/chunks/808-a18f7e79de226f17.js" defer=""></script><script src="/_next/static/chunks/568-12acc6ea9b9f00da.js" defer=""></script><script src="/_next/static/chunks/pages/about-c9328a5f833e0f3f.js" defer=""></script><script src="/_next/static/Fv5dvud-vRnhIzkPkZ6-_/_buildManifest.js" defer=""></script><script src="/_next/static/Fv5dvud-vRnhIzkPkZ6-_/_ssgManifest.js" defer=""></script><script src="/_next/static/Fv5dvud-vRnhIzkPkZ6-_/_middlewareManifest.js" defer=""></script><style id="jss-server-side">.MuiSvgIcon-root {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+  user-select: none;
+}
+.MuiSvgIcon-colorPrimary {
+  color: #464653;
+}
+.MuiSvgIcon-colorSecondary {
+  color: #f50057;
+}
+.MuiSvgIcon-colorAction {
+  color: rgba(0, 0, 0, 0.54);
+}
+.MuiSvgIcon-colorError {
+  color: #f44336;
+}
+.MuiSvgIcon-colorDisabled {
+  color: rgba(0, 0, 0, 0.26);
+}
+.MuiSvgIcon-fontSizeInherit {
+  font-size: inherit;
+}
+.MuiSvgIcon-fontSizeSmall {
+  font-size: 1.25rem;
+}
+.MuiSvgIcon-fontSizeLarge {
+  font-size: 2.1875rem;
+}
+.MuiPaper-root {
+  color: rgba(0, 0, 0, 0.87);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: #fff;
+}
+.MuiPaper-rounded {
+  border-radius: 4px;
+}
+.MuiPaper-outlined {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.MuiPaper-elevation0 {
+  box-shadow: none;
+}
+.MuiPaper-elevation1 {
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation2 {
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation3 {
+  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation4 {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation5 {
+  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation6 {
+  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation7 {
+  box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation8 {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation9 {
+  box-shadow: 0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation10 {
+  box-shadow: 0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation11 {
+  box-shadow: 0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation12 {
+  box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation13 {
+  box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation14 {
+  box-shadow: 0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation15 {
+  box-shadow: 0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation16 {
+  box-shadow: 0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation17 {
+  box-shadow: 0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation18 {
+  box-shadow: 0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation19 {
+  box-shadow: 0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation20 {
+  box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation21 {
+  box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation22 {
+  box-shadow: 0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation23 {
+  box-shadow: 0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation24 {
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);
+}
+.MuiButtonBase-root {
+  color: inherit;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  display: inline-flex;
+  outline: 0;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  user-select: none;
+  border-radius: 0;
+  vertical-align: middle;
+  -moz-appearance: none;
+  justify-content: center;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.MuiButtonBase-root::-moz-focus-inner {
+  border-style: none;
+}
+.MuiButtonBase-root.Mui-disabled {
+  cursor: default;
+  pointer-events: none;
+}
+@media print {
+  .MuiButtonBase-root {
+    color-adjust: exact;
+  }
+}
+  .MuiIconButton-root {
+    flex: 0 0 auto;
+    color: rgba(0, 0, 0, 0.54);
+    padding: 12px;
+    overflow: visible;
+    font-size: 1.5rem;
+    text-align: center;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-radius: 50%;
+  }
+  .MuiIconButton-root:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+  .MuiIconButton-root.Mui-disabled {
+    color: rgba(0, 0, 0, 0.26);
+    background-color: transparent;
+  }
+@media (hover: none) {
+  .MuiIconButton-root:hover {
+    background-color: transparent;
+  }
+}
+  .MuiIconButton-edgeStart {
+    margin-left: -12px;
+  }
+  .MuiIconButton-sizeSmall.MuiIconButton-edgeStart {
+    margin-left: -3px;
+  }
+  .MuiIconButton-edgeEnd {
+    margin-right: -12px;
+  }
+  .MuiIconButton-sizeSmall.MuiIconButton-edgeEnd {
+    margin-right: -3px;
+  }
+  .MuiIconButton-colorInherit {
+    color: inherit;
+  }
+  .MuiIconButton-colorPrimary {
+    color: #464653;
+  }
+  .MuiIconButton-colorPrimary:hover {
+    background-color: rgba(70, 70, 83, 0.04);
+  }
+@media (hover: none) {
+  .MuiIconButton-colorPrimary:hover {
+    background-color: transparent;
+  }
+}
+  .MuiIconButton-colorSecondary {
+    color: #f50057;
+  }
+  .MuiIconButton-colorSecondary:hover {
+    background-color: rgba(245, 0, 87, 0.04);
+  }
+@media (hover: none) {
+  .MuiIconButton-colorSecondary:hover {
+    background-color: transparent;
+  }
+}
+  .MuiIconButton-sizeSmall {
+    padding: 3px;
+    font-size: 1.125rem;
+  }
+  .MuiIconButton-label {
+    width: 100%;
+    display: flex;
+    align-items: inherit;
+    justify-content: inherit;
+  }
+  .MuiAppBar-root {
+    width: 100%;
+    display: flex;
+    z-index: 1100;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    flex-direction: column;
+  }
+  .MuiAppBar-positionFixed {
+    top: 0;
+    left: auto;
+    right: 0;
+    position: fixed;
+  }
+@media print {
+  .MuiAppBar-positionFixed {
+    position: absolute;
+  }
+}
+  .MuiAppBar-positionAbsolute {
+    top: 0;
+    left: auto;
+    right: 0;
+    position: absolute;
+  }
+  .MuiAppBar-positionSticky {
+    top: 0;
+    left: auto;
+    right: 0;
+    position: sticky;
+  }
+  .MuiAppBar-positionStatic {
+    position: static;
+  }
+  .MuiAppBar-positionRelative {
+    position: relative;
+  }
+  .MuiAppBar-colorDefault {
+    color: rgba(0, 0, 0, 0.87);
+    background-color: #f5f5f5;
+  }
+  .MuiAppBar-colorPrimary {
+    color: #fff;
+    background-color: #464653;
+  }
+  .MuiAppBar-colorSecondary {
+    color: #fff;
+    background-color: #f50057;
+  }
+  .MuiAppBar-colorInherit {
+    color: inherit;
+  }
+  .MuiAppBar-colorTransparent {
+    color: inherit;
+    background-color: transparent;
+  }
+  .MuiTypography-root {
+    margin: 0;
+  }
+  .MuiTypography-body2 {
+    font-size: 0.875rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+  }
+  .MuiTypography-body1 {
+    font-size: 1rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+  }
+  .MuiTypography-caption {
+    font-size: 0.75rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.66;
+    letter-spacing: 0.03333em;
+  }
+  .MuiTypography-button {
+    font-size: 0.875rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+  }
+  .MuiTypography-h1 {
+    font-size: 6rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    line-height: 1.167;
+    letter-spacing: -0.01562em;
+  }
+  .MuiTypography-h2 {
+    font-size: 3.75rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.00833em;
+  }
+  .MuiTypography-h3 {
+    font-size: 3rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.167;
+    letter-spacing: 0em;
+  }
+  .MuiTypography-h4 {
+    font-size: 2.125rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.235;
+    letter-spacing: 0.00735em;
+  }
+  .MuiTypography-h5 {
+    font-size: 1.5rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.334;
+    letter-spacing: 0em;
+  }
+  .MuiTypography-h6 {
+    font-size: 1.25rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.0075em;
+  }
+  .MuiTypography-subtitle1 {
+    font-size: 1rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    letter-spacing: 0.00938em;
+  }
+  .MuiTypography-subtitle2 {
+    font-size: 0.875rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.57;
+    letter-spacing: 0.00714em;
+  }
+  .MuiTypography-overline {
+    font-size: 0.75rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 2.66;
+    letter-spacing: 0.08333em;
+    text-transform: uppercase;
+  }
+  .MuiTypography-srOnly {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+  }
+  .MuiTypography-alignLeft {
+    text-align: left;
+  }
+  .MuiTypography-alignCenter {
+    text-align: center;
+  }
+  .MuiTypography-alignRight {
+    text-align: right;
+  }
+  .MuiTypography-alignJustify {
+    text-align: justify;
+  }
+  .MuiTypography-noWrap {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .MuiTypography-gutterBottom {
+    margin-bottom: 0.35em;
+  }
+  .MuiTypography-paragraph {
+    margin-bottom: 16px;
+  }
+  .MuiTypography-colorInherit {
+    color: inherit;
+  }
+  .MuiTypography-colorPrimary {
+    color: #464653;
+  }
+  .MuiTypography-colorSecondary {
+    color: #f50057;
+  }
+  .MuiTypography-colorTextPrimary {
+    color: rgba(0, 0, 0, 0.87);
+  }
+  .MuiTypography-colorTextSecondary {
+    color: rgba(0, 0, 0, 0.54);
+  }
+  .MuiTypography-colorError {
+    color: #f44336;
+  }
+  .MuiTypography-displayInline {
+    display: inline;
+  }
+  .MuiTypography-displayBlock {
+    display: block;
+  }
+  .MuiButton-root {
+    color: rgba(0, 0, 0, 0.87);
+    padding: 6px 16px;
+    font-size: 0.875rem;
+    min-width: 64px;
+    box-sizing: border-box;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.75;
+    border-radius: 4px;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+  }
+  .MuiButton-root:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+  .MuiButton-root.Mui-disabled {
+    color: rgba(0, 0, 0, 0.26);
+  }
+@media (hover: none) {
+  .MuiButton-root:hover {
+    background-color: transparent;
+  }
+}
+  .MuiButton-root:hover.Mui-disabled {
+    background-color: transparent;
+  }
+  .MuiButton-label {
+    width: 100%;
+    display: inherit;
+    align-items: inherit;
+    justify-content: inherit;
+  }
+  .MuiButton-text {
+    padding: 6px 8px;
+  }
+  .MuiButton-textPrimary {
+    color: #464653;
+  }
+  .MuiButton-textPrimary:hover {
+    background-color: rgba(70, 70, 83, 0.04);
+  }
+@media (hover: none) {
+  .MuiButton-textPrimary:hover {
+    background-color: transparent;
+  }
+}
+  .MuiButton-textSecondary {
+    color: #f50057;
+  }
+  .MuiButton-textSecondary:hover {
+    background-color: rgba(245, 0, 87, 0.04);
+  }
+@media (hover: none) {
+  .MuiButton-textSecondary:hover {
+    background-color: transparent;
+  }
+}
+  .MuiButton-outlined {
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    padding: 5px 15px;
+  }
+  .MuiButton-outlined.Mui-disabled {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .MuiButton-outlinedPrimary {
+    color: #464653;
+    border: 1px solid rgba(70, 70, 83, 0.5);
+  }
+  .MuiButton-outlinedPrimary:hover {
+    border: 1px solid #464653;
+    background-color: rgba(70, 70, 83, 0.04);
+  }
+@media (hover: none) {
+  .MuiButton-outlinedPrimary:hover {
+    background-color: transparent;
+  }
+}
+  .MuiButton-outlinedSecondary {
+    color: #f50057;
+    border: 1px solid rgba(245, 0, 87, 0.5);
+  }
+  .MuiButton-outlinedSecondary:hover {
+    border: 1px solid #f50057;
+    background-color: rgba(245, 0, 87, 0.04);
+  }
+  .MuiButton-outlinedSecondary.Mui-disabled {
+    border: 1px solid rgba(0, 0, 0, 0.26);
+  }
+@media (hover: none) {
+  .MuiButton-outlinedSecondary:hover {
+    background-color: transparent;
+  }
+}
+  .MuiButton-contained {
+    color: rgba(0, 0, 0, 0.87);
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+    background-color: #e0e0e0;
+  }
+  .MuiButton-contained:hover {
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+    background-color: #d5d5d5;
+  }
+  .MuiButton-contained.Mui-focusVisible {
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
+  }
+  .MuiButton-contained:active {
+    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+  }
+  .MuiButton-contained.Mui-disabled {
+    color: rgba(0, 0, 0, 0.26);
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+@media (hover: none) {
+  .MuiButton-contained:hover {
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+    background-color: #e0e0e0;
+  }
+}
+  .MuiButton-contained:hover.Mui-disabled {
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+  .MuiButton-containedPrimary {
+    color: #fff;
+    background-color: #464653;
+  }
+  .MuiButton-containedPrimary:hover {
+    background-color: rgb(49, 49, 58);
+  }
+@media (hover: none) {
+  .MuiButton-containedPrimary:hover {
+    background-color: #464653;
+  }
+}
+  .MuiButton-containedSecondary {
+    color: #fff;
+    background-color: #f50057;
+  }
+  .MuiButton-containedSecondary:hover {
+    background-color: #c51162;
+  }
+@media (hover: none) {
+  .MuiButton-containedSecondary:hover {
+    background-color: #f50057;
+  }
+}
+  .MuiButton-disableElevation {
+    box-shadow: none;
+  }
+  .MuiButton-disableElevation:hover {
+    box-shadow: none;
+  }
+  .MuiButton-disableElevation.Mui-focusVisible {
+    box-shadow: none;
+  }
+  .MuiButton-disableElevation:active {
+    box-shadow: none;
+  }
+  .MuiButton-disableElevation.Mui-disabled {
+    box-shadow: none;
+  }
+  .MuiButton-colorInherit {
+    color: inherit;
+    border-color: currentColor;
+  }
+  .MuiButton-textSizeSmall {
+    padding: 4px 5px;
+    font-size: 0.8125rem;
+  }
+  .MuiButton-textSizeLarge {
+    padding: 8px 11px;
+    font-size: 0.9375rem;
+  }
+  .MuiButton-outlinedSizeSmall {
+    padding: 3px 9px;
+    font-size: 0.8125rem;
+  }
+  .MuiButton-outlinedSizeLarge {
+    padding: 7px 21px;
+    font-size: 0.9375rem;
+  }
+  .MuiButton-containedSizeSmall {
+    padding: 4px 10px;
+    font-size: 0.8125rem;
+  }
+  .MuiButton-containedSizeLarge {
+    padding: 8px 22px;
+    font-size: 0.9375rem;
+  }
+  .MuiButton-fullWidth {
+    width: 100%;
+  }
+  .MuiButton-startIcon {
+    display: inherit;
+    margin-left: -4px;
+    margin-right: 8px;
+  }
+  .MuiButton-startIcon.MuiButton-iconSizeSmall {
+    margin-left: -2px;
+  }
+  .MuiButton-endIcon {
+    display: inherit;
+    margin-left: 8px;
+    margin-right: -4px;
+  }
+  .MuiButton-endIcon.MuiButton-iconSizeSmall {
+    margin-right: -2px;
+  }
+  .MuiButton-iconSizeSmall > *:first-child {
+    font-size: 18px;
+  }
+  .MuiButton-iconSizeMedium > *:first-child {
+    font-size: 20px;
+  }
+  .MuiButton-iconSizeLarge > *:first-child {
+    font-size: 22px;
+  }
+  .MuiContainer-root {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+@media (min-width:600px) {
+  .MuiContainer-root {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+  .MuiContainer-disableGutters {
+    padding-left: 0;
+    padding-right: 0;
+  }
+@media (min-width:600px) {
+  .MuiContainer-fixed {
+    max-width: 600px;
+  }
+}
+@media (min-width:960px) {
+  .MuiContainer-fixed {
+    max-width: 960px;
+  }
+}
+@media (min-width:1280px) {
+  .MuiContainer-fixed {
+    max-width: 1280px;
+  }
+}
+@media (min-width:1920px) {
+  .MuiContainer-fixed {
+    max-width: 1920px;
+  }
+}
+@media (min-width:0px) {
+  .MuiContainer-maxWidthXs {
+    max-width: 444px;
+  }
+}
+@media (min-width:600px) {
+  .MuiContainer-maxWidthSm {
+    max-width: 600px;
+  }
+}
+@media (min-width:960px) {
+  .MuiContainer-maxWidthMd {
+    max-width: 960px;
+  }
+}
+@media (min-width:1280px) {
+  .MuiContainer-maxWidthLg {
+    max-width: 1280px;
+  }
+}
+@media (min-width:1920px) {
+  .MuiContainer-maxWidthXl {
+    max-width: 1920px;
+  }
+}
+  html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  strong, b {
+    font-weight: 700;
+  }
+  body {
+    color: rgba(0, 0, 0, 0.87);
+    margin: 0;
+    font-size: 0.875rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+    background-color: #fafafa;
+  }
+@media print {
+  body {
+    background-color: #fff;
+  }
+}
+  body::backdrop {
+    background-color: #fafafa;
+  }
+@media print {
+  .MuiDialog-root {
+    position: absolute !important;
+  }
+}
+  .MuiDialog-scrollPaper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .MuiDialog-scrollBody {
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+  }
+  .MuiDialog-scrollBody:after {
+    width: 0;
+    height: 100%;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .MuiDialog-container {
+    height: 100%;
+    outline: 0;
+  }
+@media print {
+  .MuiDialog-container {
+    height: auto;
+  }
+}
+  .MuiDialog-paper {
+    margin: 32px;
+    position: relative;
+    overflow-y: auto;
+  }
+@media print {
+  .MuiDialog-paper {
+    box-shadow: none;
+    overflow-y: visible;
+  }
+}
+  .MuiDialog-paperScrollPaper {
+    display: flex;
+    max-height: calc(100% - 64px);
+    flex-direction: column;
+  }
+  .MuiDialog-paperScrollBody {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+  }
+  .MuiDialog-paperWidthFalse {
+    max-width: calc(100% - 64px);
+  }
+  .MuiDialog-paperWidthXs {
+    max-width: 444px;
+  }
+@media (max-width:507.95px) {
+  .MuiDialog-paperWidthXs.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+  .MuiDialog-paperWidthSm {
+    max-width: 600px;
+  }
+@media (max-width:663.95px) {
+  .MuiDialog-paperWidthSm.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+  .MuiDialog-paperWidthMd {
+    max-width: 960px;
+  }
+@media (max-width:1023.95px) {
+  .MuiDialog-paperWidthMd.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+  .MuiDialog-paperWidthLg {
+    max-width: 1280px;
+  }
+@media (max-width:1343.95px) {
+  .MuiDialog-paperWidthLg.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+  .MuiDialog-paperWidthXl {
+    max-width: 1920px;
+  }
+@media (max-width:1983.95px) {
+  .MuiDialog-paperWidthXl.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+  .MuiDialog-paperFullWidth {
+    width: calc(100% - 64px);
+  }
+  .MuiDialog-paperFullScreen {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    max-width: 100%;
+    max-height: none;
+    border-radius: 0;
+  }
+  .MuiDialog-paperFullScreen.MuiDialog-paperScrollBody {
+    margin: 0;
+    max-width: 100%;
+  }
+  .MuiDivider-root {
+    border: none;
+    height: 1px;
+    margin: 0;
+    flex-shrink: 0;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+  .MuiDivider-absolute {
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+  }
+  .MuiDivider-inset {
+    margin-left: 72px;
+  }
+  .MuiDivider-light {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  .MuiDivider-middle {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  .MuiDivider-vertical {
+    width: 1px;
+    height: 100%;
+  }
+  .MuiDivider-flexItem {
+    height: auto;
+    align-self: stretch;
+  }
+  .MuiDrawer-docked {
+    flex: 0 0 auto;
+  }
+  .MuiDrawer-paper {
+    top: 0;
+    flex: 1 0 auto;
+    height: 100%;
+    display: flex;
+    outline: 0;
+    z-index: 1200;
+    position: fixed;
+    overflow-y: auto;
+    flex-direction: column;
+    -webkit-overflow-scrolling: touch;
+  }
+  .MuiDrawer-paperAnchorLeft {
+    left: 0;
+    right: auto;
+  }
+  .MuiDrawer-paperAnchorRight {
+    left: auto;
+    right: 0;
+  }
+  .MuiDrawer-paperAnchorTop {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    height: auto;
+    max-height: 100%;
+  }
+  .MuiDrawer-paperAnchorBottom {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    max-height: 100%;
+  }
+  .MuiDrawer-paperAnchorDockedLeft {
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .MuiDrawer-paperAnchorDockedTop {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .MuiDrawer-paperAnchorDockedRight {
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .MuiDrawer-paperAnchorDockedBottom {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+  }
+@media (min-width:0px) and (max-width:599.95px) {
+  .jss12 {
+    display: none;
+  }
+}
+@media (min-width:0px) {
+  .jss13 {
+    display: none;
+  }
+}
+@media (max-width:599.95px) {
+  .jss14 {
+    display: none;
+  }
+}
+@media (min-width:600px) and (max-width:959.95px) {
+  .jss15 {
+    display: none;
+  }
+}
+@media (min-width:600px) {
+  .jss16 {
+    display: none;
+  }
+}
+@media (max-width:959.95px) {
+  .jss17 {
+    display: none;
+  }
+}
+@media (min-width:960px) and (max-width:1279.95px) {
+  .jss18 {
+    display: none;
+  }
+}
+@media (min-width:960px) {
+  .jss19 {
+    display: none;
+  }
+}
+@media (max-width:1279.95px) {
+  .jss20 {
+    display: none;
+  }
+}
+@media (min-width:1280px) and (max-width:1919.95px) {
+  .jss21 {
+    display: none;
+  }
+}
+@media (min-width:1280px) {
+  .jss22 {
+    display: none;
+  }
+}
+@media (max-width:1919.95px) {
+  .jss23 {
+    display: none;
+  }
+}
+@media (min-width:1920px) {
+  .jss24 {
+    display: none;
+  }
+}
+@media (min-width:1920px) {
+  .jss25 {
+    display: none;
+  }
+}
+@media (min-width:0px) {
+  .jss26 {
+    display: none;
+  }
+}
+  .MuiLink-underlineNone {
+    text-decoration: none;
+  }
+  .MuiLink-underlineHover {
+    text-decoration: none;
+  }
+  .MuiLink-underlineHover:hover {
+    text-decoration: underline;
+  }
+  .MuiLink-underlineAlways {
+    text-decoration: underline;
+  }
+  .MuiLink-button {
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    user-select: none;
+    border-radius: 0;
+    vertical-align: middle;
+    -moz-appearance: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .MuiLink-button::-moz-focus-inner {
+    border-style: none;
+  }
+  .MuiLink-button.Mui-focusVisible {
+    outline: auto;
+  }
+  .MuiList-root {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    list-style: none;
+  }
+  .MuiList-padding {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .MuiList-subheader {
+    padding-top: 0;
+  }
+  .MuiListItem-root {
+    width: 100%;
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+    text-align: left;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    justify-content: flex-start;
+    text-decoration: none;
+  }
+  .MuiListItem-root.Mui-focusVisible {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  .MuiListItem-root.Mui-selected, .MuiListItem-root.Mui-selected:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  .MuiListItem-root.Mui-disabled {
+    opacity: 0.5;
+  }
+  .MuiListItem-container {
+    position: relative;
+  }
+  .MuiListItem-dense {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .MuiListItem-alignItemsFlexStart {
+    align-items: flex-start;
+  }
+  .MuiListItem-divider {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    background-clip: padding-box;
+  }
+  .MuiListItem-gutters {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .MuiListItem-button {
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  }
+  .MuiListItem-button:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+@media (hover: none) {
+  .MuiListItem-button:hover {
+    background-color: transparent;
+  }
+}
+  .MuiListItem-secondaryAction {
+    padding-right: 48px;
+  }
+  .MuiListItemIcon-root {
+    color: rgba(0, 0, 0, 0.54);
+    display: inline-flex;
+    min-width: 56px;
+    flex-shrink: 0;
+  }
+  .MuiListItemIcon-alignItemsFlexStart {
+    margin-top: 8px;
+  }
+  .MuiListItemText-root {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  .MuiListItemText-multiline {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+  .MuiListItemText-inset {
+    padding-left: 56px;
+  }
+  .MuiToolbar-root {
+    display: flex;
+    position: relative;
+    align-items: center;
+  }
+  .MuiToolbar-gutters {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+@media (min-width:600px) {
+  .MuiToolbar-gutters {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+  .MuiToolbar-regular {
+    min-height: 56px;
+  }
+@media (min-width:0px) and (orientation: landscape) {
+  .MuiToolbar-regular {
+    min-height: 48px;
+  }
+}
+@media (min-width:600px) {
+  .MuiToolbar-regular {
+    min-height: 64px;
+  }
+}
+  .MuiToolbar-dense {
+    min-height: 48px;
+  }
+  .jss27 {
+    margin-top: auto;
+  }
+  .jss28 {
+    color: rgba(0, 0, 0, 0.54);
+    padding: 24px 16px;
+    text-align: center;
+  }
+  .jss29 {
+    margin-top: 10vh;
+    align-items: start;
+  }
+  .jss30 {
+    vertical-align: middle;
+  }
+  .jss31 {
+    color: rgba(0, 0, 0, 0.54);
+    border: none;
+    box-shadow: none;
+    margin-top: 5px;
+    transition: color .01s;
+    border-radius: 8px;
+    text-transform: none;
+    background-color: #ebebeb;
+  }
+  .jss31:hover {
+    background-color: #e1e1e1;
+  }
+  .jss31:focus {
+    box-shadow: none;
+    background-color: #e1e1e1;
+  }
+  .jss32 {
+    color: #9791a1;
+  }
+  .jss33 {
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: column;
+  }
+  .jss10 {
+    margin-top: 20vh;
+    align-items: start;
+  }
+  .jss11 {
+    vertical-align: middle;
+  }
+  .jss1 {
+    min-height: 100vh;
+    background-color: #fafafa;
+  }
+@media (max-width:1919.95px) {
+  .jss2 {
+    display: none;
+  }
+}
+  .jss3 {
+    background-color: #fafafa;
+  }
+@media (min-width:600px) {
+  .jss3 {
+    width: 100%;
+    z-index: 1199;
+    margin-left: 240px;
+  }
+}
+  .jss4 {
+    flex-grow: 1;
+    margin-top: 5px;
+  }
+  .jss5 {
+    color: rgba(0, 0, 0, 0.54);
+    text-transform: none;
+  }
+  .jss6 {
+    margin-right: 16px;
+  }
+@media (min-width:1920px) {
+  .jss6 {
+    display: none;
+  }
+}
+  .jss7 {
+    min-height: 56px;
+  }
+@media (min-width:0px) and (orientation: landscape) {
+  .jss7 {
+    min-height: 48px;
+  }
+}
+@media (min-width:600px) {
+  .jss7 {
+    min-height: 64px;
+  }
+}
+  .jss8 {
+    width: 240px;
+  }
+  .jss9 {
+    padding: 24px;
+    margin-top: 20px;
+  }
+  .jss9 h1 {
+    color: #3f3f3f;
+    margin-top: 20px;
+    border-radius: 8px;
+    padding-bottom: 15px;
+  }
+  .jss9 h2 {
+    color: #3f3f3f;
+    font-size: 26px;
+    font-weight: 700;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .jss9 h3 {
+    color: #3f3f3f;
+    font-size: 24px;
+    font-weight: 700;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .jss9 a {
+    color: #3f3f3f;
+  }
+  .jss9 p {
+    color: #3f3f3f;
+    font-size: 17px;
+    line-height: 2;
+  }
+  .jss9 li {
+    color: #3f3f3f;
+    padding: 2.5px;
+    font-size: 18px;
+  }
+  .jss9 hr {
+    border: none;
+    height: 1.5px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background-color: #e9e9e9;
+  }
+  .jss9 ul {
+    font-size: 16px;
+    padding-left: 25px;
+    padding-bottom: 15px;
+  }
+  .jss9 ol {
+    font-size: 16px;
+    padding-left: 25px;
+    padding-bottom: 15px;
+  }
+  .jss9 pre {
+    padding: 13px;
+    overflow: auto;
+    font-size: 14px;
+    background: rgb(235, 235, 235);
+    margin-top: -5px;
+    line-height: 1.3;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  .jss9 blockquote {
+    color: #535a60;
+    margin-top: 15px;
+    border-left: 5px solid #c8ccd0;
+    margin-bottom: 20px;
+    background-color: #f1f1f1;
+  }
+  .jss9 blockquote p {
+    padding: 10px;
+  }
+  .jss9 .codeBox pre {
+    background: #2E3440;
+  }
+  .jss9 .codeBox pre code {
+    color: #f8f8f2;
+  }
+  .jss9 pre code {
+    color: #3f3f3f;
+  }
+  .jss9 ol code {
+    word-wrap: break-word;
+    font-family: inherit;
+    padding-left: 7px;
+    border-radius: 3px;
+    padding-right: 7px;
+    background-color: #f1f1f1;
+  }
+  .jss9 ul code {
+    word-wrap: break-word;
+    font-family: inherit;
+    padding-left: 7px;
+    border-radius: 3px;
+    padding-right: 7px;
+    background-color: #f1f1f1;
+  }
+  .jss9 li a {
+    border-bottom: 1px solid #000;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+  }
+  .jss9 p code {
+    word-wrap: break-word;
+    font-family: inherit;
+    padding-left: 7px;
+    border-radius: 3px;
+    padding-right: 7px;
+    background-color: #f1f1f1;
+  }
+  .jss9 h1 a {
+    font-size: 40px;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    letter-spacing: 1px;
+    text-decoration: none;
+  }</style></head><body><div id="__next" data-reactroot=""><div class="jss1"><header class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorTransparent jss3 mui-fixed MuiPaper-elevation0"><div class="MuiContainer-root MuiContainer-maxWidthLg"><div class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"><button class="MuiButtonBase-root MuiIconButton-root jss6 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></span></button><h6 class="MuiTypography-root jss4 MuiTypography-h6"><a href="/"><img src="/assets/images/logo.png" alt="logo" width="40"/></a></h6><a class="MuiButtonBase-root MuiButton-root MuiButton-text jss5 MuiButton-colorInherit" tabindex="0" aria-disabled="false" href="/"><span class="MuiButton-label">Home</span></a><a class="MuiButtonBase-root MuiIconButton-root" tabindex="0" aria-disabled="false" href="https://github.com/darkkD11/File_encrypti_decrypt" target="_blank" rel="noopener"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"></path></svg></span></a><button class="MuiButtonBase-root MuiIconButton-root" tabindex="0" type="button"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"></path></svg></span></button></div></div></header><nav class="jss2" aria-label="mailbox folders"><div class="jss16"></div><div class="jss14"><div class="MuiDrawer-root MuiDrawer-docked"><div class="MuiPaper-root MuiDrawer-paper jss8 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft MuiPaper-elevation0"><div><div class="jss7"></div><ul class="MuiList-root MuiList-padding"><a class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">File Encryption &amp; Decryption Documentation</span></div></a></ul><hr class="MuiDivider-root"/><ul class="MuiList-root MuiList-padding"><div><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" href="/about/#introduction"><div class="MuiListItemIcon-root"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"></path></svg></div><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Introduction</span></div></div></div><div><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" href="/about/#features"><div class="MuiListItemIcon-root"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"></path></svg></div><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Features</span></div></div></div><div><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" href="/about/#installation"><div class="MuiListItemIcon-root"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg></div><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Installation</span></div></div></div><div><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" href="/about/#usage"><div class="MuiListItemIcon-root"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-.46 0-.93.04-1.4.14-2.76.53-4.96 2.76-5.48 5.52-.48 2.61.48 5.01 2.22 6.56.43.38.66.91.66 1.47V19c0 1.1.9 2 2 2h.28c.35.6.98 1 1.72 1s1.38-.4 1.72-1H14c1.1 0 2-.9 2-2v-2.31c0-.55.22-1.09.64-1.46C18.09 13.95 19 12.08 19 10c0-3.87-3.13-7-7-7zm2 16h-4v-1h4v1zm0-2h-4v-1h4v1zm-1.5-5.59V14h-1v-2.59L9.67 9.59l.71-.71L12 10.5l1.62-1.62.71.71-1.83 1.82z"></path></svg></div><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Usage</span></div></div></div><div><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" href="/about/#limitations"><div class="MuiListItemIcon-root"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path></svg></div><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Limitations</span></div></div></div><div><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" href="/about/#best-practices"><div class="MuiListItemIcon-root"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"></path></svg></div><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Best-Practices</span></div></div></div><div><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" href="/about/#faq"><div class="MuiListItemIcon-root"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h4l3 3 3-3h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 16h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 11.9 13 12.5 13 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></svg></div><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">FAQ</span></div></div></div><div><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" href="/about/#technical-details"><div class="MuiListItemIcon-root"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path><path d="M17.5 10.5c.88 0 1.73.09 2.5.26V9.24c-.79-.15-1.64-.24-2.5-.24-1.7 0-3.24.29-4.5.83v1.66c1.13-.64 2.7-.99 4.5-.99zM13 12.49v1.66c1.13-.64 2.7-.99 4.5-.99.88 0 1.73.09 2.5.26V11.9c-.79-.15-1.64-.24-2.5-.24-1.7 0-3.24.3-4.5.83zM17.5 14.33c-1.7 0-3.24.29-4.5.83v1.66c1.13-.64 2.7-.99 4.5-.99.88 0 1.73.09 2.5.26v-1.52c-.79-.16-1.64-.24-2.5-.24z"></path></svg></div><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Technical-Details</span></div></div></div></ul></div></div></div></div></nav><main class="jss9"><div class="MuiContainer-root MuiContainer-maxWidthLg"><div class="jss7"></div><div></div></div></main><div class="jss27"><footer class="jss28"><div class="MuiContainer-root MuiContainer-maxWidthSm"><p class="MuiTypography-root MuiTypography-body1">Built and developed by<!-- --> <a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit" href="https://github.com/darkkD11/File_encrypti_decrypt" target="_blank" rel="noopener">B.E Student of Theem COE</a></p></div></footer></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"docs":[{"lang":"en_US","content":"# [Introduction](#introduction)\r\n\r\n---\r\n\r\nFile Encryption \u0026 Decryption is a free [opensource] web app that provides secure file encryption in the browser.\r\n\r\n\u003cbr\u003e\r\n\r\n# [Features](#features)\r\n\r\n---\r\n\r\n### Security\r\n\r\n- [XChaCha20-Poly1305] - for symmetric encryption.\r\n- [Argon2id] - for password-based key derivation.\r\n- [X25519] - for key exchange.\r\n\r\nThe libsodium library is used for all cryptographic algorithms. [Technical details here](#technical-details).\r\n\r\n\u003cbr\u003e\r\n\r\n### Privacy\r\n\r\n- The app runs locally in your browser.\r\n- No data is ever collected or sent to anyone.​\r\n\r\n\u003cbr\u003e\r\n\r\n### Functionality\r\n\r\n- Secure encryption/decryption of files with passwords or keys.\r\n- Secure random password generation.\r\n- Asymmetric key pair generation.\r\n- Authenticated key exchange.\r\n- Password strength estimation.\r\n\r\n\u003cbr\u003e\r\n\r\n# [Installation](#installation)\r\n\r\n---\r\nIt's easy to self host and deploy File Encryption \u0026 Decryption, you can do that either with npm\r\n\r\nIf you wish to self host the app please follow these instructions:\r\n\r\n\u003cbr\u003e\r\n\r\n## With npm\r\n\r\nBefore installation make sure you are running [nodejs](https://nodejs.org/en/) and have [npm](https://www.npmjs.com/) installed\r\n\r\n\u003cbr \u003e\r\n\r\n1. clone the github repository\r\n\r\n```bash\r\ngit clone https://github.com/darkkD11/File_encrypti_decrypt\r\n```\r\n\r\n2. move to the folder\r\n\r\n```bash\r\ncd File File_encrypti_decrypt\r\n```\r\n\r\n3. install dependencies\r\n\r\n```bash\r\nnpm install\r\n```\r\n\r\n4. build app\r\n\r\n```bash\r\nnpm run build\r\n```\r\n\r\n5. start File Encryption \u0026 Decryption\r\n\r\n```bash\r\nnpm run start\r\n```\r\n\r\nthe app should be running on port 3391.\r\n\u003cbr\u003e\r\n\r\nif you wish to run the app in development enviroment run :\r\n\r\n\u003cbr\u003e\r\n\r\n```bash\r\nnpm run dev\r\n```\r\n\r\n\u003cbr\u003e\r\n\r\n# [Usage](#usage)\r\n\r\n---\r\n\r\n## File Encryption\r\n\r\n- ### using a password\r\n\r\n1. Open File Encryption \u0026 Decryption.\r\n2. Navigate to the Encryption panel.\r\n3. Drag \u0026 Drop or Select the files that you wish to encrypt.\r\n4. Enter a password or generate one.\r\n5. Download the encrypted file.\r\n\r\n\u003e You should always use a strong password!\r\n\r\n- ### using public and private keys\r\n\r\n1. Open File Encryption \u0026 Decryption.\r\n2. Navigate to the Encryption panel.\r\n3. Drag \u0026 Drop or Select the files that you wish to encrypt.\r\n4. Choose public key method.\r\n5. Enter or load recipient's public key and your private key.\r\n   if you don't have public and private keys you can generate a key pair.\r\n6. Download the encrypted file.\r\n7. Share your public key with the recipient so he will be able to decrypt the file.\r\n\r\n\u003e Never share your private key to anyone! Only public keys should be exchanged.\r\n\r\n\u003cbr\u003e\r\n\r\n## File Decryption\r\n\r\n- ### using a password\r\n\r\n1. Open File Encryption \u0026 Decryption.\r\n2. Navigate to the Decryption panel.\r\n3. Drag \u0026 Drop or Select the files that you wish to decrypt.\r\n4. Enter the encryption password.\r\n5. Download the decrypted file.\r\n\r\n- ### using public and private keys\r\n\r\n1. Open File Encryption \u0026 Decryption.\r\n2. Navigate to the Decryption panel.\r\n3. Drag \u0026 Drop or Select the files that you wish to decrypt.\r\n4. Enter or load sender's public key and your private key.\r\n5. Download the decrypted file.\r\n\r\n\u003cbr\u003e\r\n\r\n# [Limitations](#limitations)\r\n\r\n---\r\n\r\n### File Signature\r\n\r\nFiles encrypted with File Encryption \u0026 Decryption are identifiable by looking at the file signature that is used by the app to verify the content of a file, Such signatures are also known as magic numbers or Magic Bytes. These Bytes are authenticated and cannot be changed.\r\n\r\n### Safari and Mobile Browsers\r\n\r\nSafari and Mobile browsers are limited to a single file with maximum size of 1GB due to some issues related to service-workers. In addition, this limitation also applies when the app fails to register the service-worker (e.g FireFox Private Browsing).\r\n\r\n\u003cbr\u003e\r\n\r\n# [Best Practices](#best-practices)\r\n\r\n---\r\n\r\n### Choosing Passwords\r\n\r\nThe majority of individuals struggle to create and remember passwords, resulting in weak passwords and password reuse. Password-based encryption is substantially less safe as a result of these improper practices. That's why it is recommended to use the built in password generator and use a password manager like [Bitwarden], where you are able to store the safe password.\r\n\r\n\r\nIf you want to choose a password that you are able to memorize then you should type a passphrase made of 8 words or more.\r\n\r\n\u003cbr\u003e\r\n\r\n### Using public key encryption instead of a password\r\n\r\nIf you are encrypting a file that you are going to share it with someone else then you probably should encrypt it with the recipient public key and your private key.\r\n\r\n\u003cbr\u003e\r\n\r\n### Sharing Encrypted Files\r\n\r\nIf you plan on sending someone an encrypted file, it is recommended to use your private key and their public key to encrypt the file.\r\n\r\nThe file can be shared in any safe file sharing app.\r\n\r\n\u003cbr\u003e\r\n\r\n### Sharing the public key\r\n\r\nPublic keys are allowed to be shared, they can be sent as `.public` file or as text.\r\n\r\n\u003e Never share your private key to anyone! Only public keys should be exchanged.\r\n\r\n\u003cbr\u003e\r\n\r\n### Storing the Public \u0026 Private keys\r\n\r\nMake sure to store your encryption keys in a safe place and make a backup to an external storage.\r\n\r\nStoring your private key in cloud storage is not recommended!\r\n\r\n\u003cbr\u003e\r\n\r\n### Sharing Decryption Passwords\r\n\r\nSharing decryption password can be done using a safe end-to-end encrypted messaging app. It's recommended to use a _Disappearing Messages_ feature, and to delete the password after the recipient has decrypted the file.\r\n\r\n\u003e Never choose the same password for different files.\r\n\r\n\u003cbr\u003e\r\n\r\n# [FAQ](#faq)\r\n\r\n---\r\n\r\n### Does the app log or store any of my data?\r\n\r\nNo, File Encryption \u0026 Decryption never stores any of your data. It only runs locally in your browser.\r\n\r\n\u003chr style=\"height: 1px\"\u003e\r\n\r\n### Is File Encryption \u0026 Decryption free?\r\n\r\nYes, File Encryption \u0026 Decryption is free and always will be.\r\n\r\n\u003chr style=\"height: 1px\"\u003e\r\n\r\n### Which file types are supported? Is there a file size limit?\r\n\r\nFile Encryption \u0026 Decryption accepts all file types. There's no file size limit, meaning files of any size can be encrypted.\r\n\r\nSafari browser and mobile/smartphones browsers are limited to 1GB.\r\n\r\n\u003chr style=\"height: 1px\"\u003e\r\n\r\n### I forgot my password, can I still decrypt my files?\r\n\r\nNo, we don't know your password. Always make sure to store your passwords in a password manager.\r\n\r\n\u003chr style=\"height: 1px\"\u003e\r\n\r\n### Why am I seeing a notice that says \"You have limited experience (single file, 1GB)\"?\r\n\r\nIt means that your browser doesn't support the server-worker fetch api. Hence, you are limited to small size files. see [Limitations](#limitations) for more info.\r\n\r\n\u003chr style=\"height: 1px\" id=\"why-need-private-key\"\u003e\r\n\r\n### Is it safe to share my public key?\r\n\r\nYes. Public keys are allowed to be shared, they can be sent as `.public` file or as text.\r\n\r\nBut make sure to never share your private key with anyone!\r\n\r\n\u003chr style=\"height: 1px\"\u003e\r\n\r\n### Why the app asks for my private key in the public key encryption mode?\r\n\r\nFile Encryption \u0026 Decryption uses authenticated encryption. The sender must provide their private key, a new shared key will be computed from both keys to encrypt the file. Recipient has to provide their private key when decrypting also. this way can verify that the encrypted file was not tampered with, and was sent from the real sender.\r\n\r\n\u003chr style=\"height: 1px\"\u003e\r\n\r\n### I have lost my private key, is it possible to recover it?\r\n\r\nNope. lost private keys cannot be recovered.\r\n\r\nAlso, if you feel that your private key has been compromised (e.g accidentally shared / computer hacked) then you must decrypt all files that were encrypted with that key, generate a new keypair and re-encrypt the files.\r\n\r\n\u003chr style=\"height: 1px\"\u003e\r\n\r\n### Does the app measure password strength?\r\n\r\nWe use [zxcvbn](https://github.com/dropbox/zxcvbn) JS implementation to check the entropy of the password input, this entropy will be converted to score that will be displayed on screen.\r\n\r\n\u003chr style=\"height: 1px\"\u003e\r\n\r\n### Does the app connect to the internet?\r\n\r\nOnce you visit the site and the page loads, it runs only offline.\r\n\r\n\u003chr style=\"height: 1px\"\u003e\r\n\r\n### Why should I use File Encryption \u0026 Decryption?\r\n\r\n1. The app uses fast modern secure cryptographic algorithms.\r\n2. It's super fast and easy to use.\r\n3. It runs in the browser, no need to setup or install anything.\r\n4. It's free opensource software and can be easily self hosted.\r\n\r\n\u003chr style=\"height: 1px\"\u003e\r\n\r\n### When should I not use File Encryption \u0026 Decryption?\r\n\r\n1. If you want to encrypt a disk (e.g [VeraCrypt]).\r\n2. If you want to frequently access encrypted files (e.g [Cryptomator]).\r\n3. If you want to encrypt and sign files in the same tool. (e.g [Kryptor]).\r\n4. If you prefer a command line tool (e.g [Kryptor]).\r\n5. If you want something that adheres to industry standards, use [GPG].\r\n\r\n\u003cbr\u003e\r\n\r\n# [Technical Details](#technical-details)\r\n\r\n---\r\n\r\n### Password hashing and Key derivation\r\n\r\nPassword hashing functions derive a secret key of any size from a password and a salt.\r\n\r\n\u003cbr\u003e\r\n\r\n\u003cdiv class=\"codeBox\"\u003e\r\n\r\n```javascript\r\nlet salt = sodium.randombytes_buf(sodium.crypto_pwhash_SALTBYTES);\r\nlet key = sodium.crypto_pwhash(\r\n  sodium.crypto_secretstream_xchacha20poly1305_KEYBYTES,\r\n  password,\r\n  salt,\r\n  sodium.crypto_pwhash_OPSLIMIT_INTERACTIVE,\r\n  sodium.crypto_pwhash_MEMLIMIT_INTERACTIVE,\r\n  sodium.crypto_pwhash_ALG_ARGON2ID13\r\n);\r\n```\r\n\r\n\u003c/div\u003e\r\n\r\nThe `crypto_pwhash()` function derives an 256 bits long key from a password and a salt salt whose fixed length is 128 bits, which should be unpredictable.\r\n\r\n`randombytes_buf()` is the easiest way to fill the 128 bits of the salt.\r\n\r\n\u003cbr\u003e\r\n\r\n`OPSLIMIT` represents a maximum amount of computations to perform.\r\n\r\n`MEMLIMIT` is the maximum amount of RAM that the function will use, in bytes.\r\n\r\n\u003cbr\u003e\r\n\r\n`crypto_pwhash_OPSLIMIT_INTERACTIVE` and `crypto_pwhash_MEMLIMIT_INTERACTIVE` provide base line for these two parameters. This currently requires 64 MiB of dedicated RAM. which is suitable for in-browser operations.\r\n\u003cbr\u003e\r\n`crypto_pwhash_ALG_ARGON2ID13` using the Argon2id algorithm version 1.3.\r\n\r\n\u003cbr\u003e\r\n\r\n### File Encryption (stream)\r\n\r\nIn order to use the app to encrypt a file, the user has to provide a valid file and a password. this password gets hashed and a secure key is derived from it with Argon2id to encrypt the file.\r\n\r\n\u003cbr\u003e\r\n\r\n\u003cdiv class=\"codeBox\"\u003e\r\n\r\n```javascript\r\nlet res = sodium.crypto_secretstream_xchacha20poly1305_init_push(key);\r\nheader = res.header;\r\nstate = res.state;\r\n\r\nlet tag = last\r\n  ? sodium.crypto_secretstream_xchacha20poly1305_TAG_FINAL\r\n  : sodium.crypto_secretstream_xchacha20poly1305_TAG_MESSAGE;\r\n\r\nlet encryptedChunk = sodium.crypto_secretstream_xchacha20poly1305_push(\r\n  state,\r\n  new Uint8Array(chunk),\r\n  null,\r\n  tag\r\n);\r\n\r\nstream.enqueue(signature, salt, header, encryptedChunk);\r\n```\r\n\r\n\u003c/div\u003e\r\n\r\nThe `crypto_secretstream_xchacha20poly1305_init_push` function creates an encrypted stream where it initializes a `state` using the key and an internal, automatically generated initialization vector. It then stores the stream header into `header` that has a size of 192 bits.\r\n\r\nThis is the first function to call in order to create an encrypted stream. The key will not be required any more for subsequent operations.\r\n\r\n\u003cbr\u003e\r\n\r\nAn encrypted stream starts with a short header, whose size is 192 bits. That header must be sent/stored before the sequence of encrypted messages, as it is required to decrypt the stream. The header content doesn't have to be secret because decryption with a different header would fail.\r\n\r\nA tag is attached to each message accoring to the value of `last`, which indicates if that is the last chunk of the file or not. That tag can be any of:\r\n\r\n1. `crypto_secretstream_xchacha20poly1305_TAG_MESSAGE`: This doesn't add any information about the nature of the message.\r\n2. `crypto_secretstream_xchacha20poly1305_TAG_FINAL`: This indicates that the message marks the end of the stream, and erases the secret key used to encrypt the previous sequence.\r\n\r\nThe `crypto_secretstream_xchacha20poly1305_push()` function encrypts the file `chunk` using the `state` and the `tag`, without any additional information (`null`).\r\n\u003cbr\u003e\r\n\r\nthe XChaCha20 stream cipher Poly1305 MAC authentication are used for encryption.\r\n\r\n`stream.enqueue()` function adds the File Encryption \u0026 Decryption signature(magic bytes), salt and header followed by the encrypted chunks.\r\n\r\n### File Decryption (stream)\r\n\r\n\u003cdiv class=\"codeBox\"\u003e\r\n\r\n```javascript\r\nlet state = sodium.crypto_secretstream_xchacha20poly1305_init_pull(header, key);\r\n\r\nlet result = sodium.crypto_secretstream_xchacha20poly1305_pull(\r\n  state,\r\n  new Uint8Array(chunk)\r\n);\r\n\r\nif (result) {\r\n  let decryptedChunk = result.message;\r\n  stream.enqueue(decryptedChunk);\r\n\r\n  if (!last) {\r\n    // continue decryption\r\n  }\r\n}\r\n```\r\n\r\n\u003c/div\u003e\r\n\r\nThe `crypto_secretstream_xchacha20poly1305_init_pull()` function initializes a state given a secret `key` and a `header`. The key is derived from the password provided during the decryption, and the header sliced from the file. The key will not be required any more for subsequent operations.\r\n\r\n\u003cbr\u003e\r\n\r\nThe `crypto_secretstream_xchacha20poly1305_pull()` function verifies that the `chunk` contains a valid ciphertext and authentication tag for the given `state`.\r\n\r\nThis function will stay in a loop, until a message with the `crypto_secretstream_xchacha20poly1305_TAG_FINAL` tag is found.\r\n\r\nIf the decryption key is incorrect the function returns an error.\r\n\r\nIf the ciphertext or the authentication tag appear to be invalid it returns an error.\r\n\r\n\u003cbr\u003e\r\n\r\n### Random password generation\r\n\r\n\u003cdiv class=\"codeBox\"\u003e\r\n\r\n```javascript\r\nlet password = sodium.to_base64(\r\n  sodium.randombytes_buf(16),\r\n  sodium.base64_variants.URLSAFE_NO_PADDING\r\n);\r\nreturn password;\r\n```\r\n\r\n\u003c/div\u003e\r\n\r\nThe `randombytes_buf()` function fills 128 bits starting at buf with an unpredictable sequence of bytes.\r\n\r\nThe `to_base64()` function encodes buf as a Base64 string without padding.\r\n\r\n\u003cbr\u003e\r\n\r\n### Keys generation and exchange\r\n\r\n\u003cdiv class=\"codeBox\"\u003e\r\n\r\n```javascript\r\nconst keyPair = sodium.crypto_kx_keypair();\r\nlet keys = {\r\n  publicKey: sodium.to_base64(keyPair.publicKey),\r\n  privateKey: sodium.to_base64(keyPair.privateKey),\r\n};\r\nreturn keys;\r\n```\r\n\u003c/div\u003e\r\n\r\nThe `crypto_kx_keypair()` function randomly generates a secret key and a corresponding public key. The public key is put into publicKey and the secret key into privateKey. both of 256 bits.\r\n\r\n\u003cbr\u003e\r\n\r\n\u003cdiv class=\"codeBox\"\u003e\r\n\r\n```javascript\r\nlet key = sodium.crypto_kx_client_session_keys(\r\n  sodium.crypto_scalarmult_base(privateKey),\r\n  privateKey,\r\n  publicKey\r\n);\r\n```\r\n\u003c/div\u003e\r\n\r\nUsing the key exchange API, two parties can securely compute a set of shared keys using their peer's public key and their own secret key.\r\n\r\nThe `crypto_kx_client_session_keys()` function computes a pair of 256 bits long shared keys using the recipient's public key, the sender's private key.\r\n\r\nThe `crypto_scalarmult_base()` function used to compute the sender's public key from their private key.\r\n\r\n\u003cbr\u003e\r\n\r\n### XChaCha20-Poly1305\r\n\r\nXChaCha20 is a variant of ChaCha20 with an extended nonce, allowing random nonces to be safe.\r\n\r\nXChaCha20 doesn't require any lookup tables and avoids the possibility of timing attacks.\r\n\r\nInternally, XChaCha20 works like a block cipher used in counter mode. It uses the HChaCha20 hash function to derive a subkey and a subnonce from the original key and extended nonce, and a dedicated 64-bit block counter to avoid incrementing the nonce after each block.\r\n\r\n\u003cbr\u003e\r\n\r\n\r\n[//]: # \"links\"\r\n[xchacha20-poly1305]: https://libsodium.gitbook.io/doc/secret-key_cryptography/aead/chacha20-poly1305/xchacha20-poly1305_construction\r\n[argon2id]: https://github.com/p-h-c/phc-winner-argon2\r\n[x25519]: https://cr.yp.to/ecdh.html\r\n[opensource]: https://github.com/darkkD11/File_encrypti_decrypt\r\n[bitwarden]: https://bitwarden.com/\r\n[extending the salsa20 nonce paper]: https://cr.yp.to/snuffle/xsalsa-20081128.pdf\r\n[soon]: https://tools.ietf.org/html/draft-irtf-cfrg-xchacha\r\n[github]: https://github.com/darkkD11/File_encrypti_decrypt\r\n[veracrypt]: https://veracrypt.fr\r\n[cryptomator]: https://cryptomator.org\r\n[kryptor]: https://github.com/samuel-lucas6/Kryptor\r\n[gpg]: https://gnupg.org\r\n"}]},"__N_SSG":true},"page":"/about","query":{},"buildId":"Fv5dvud-vRnhIzkPkZ6-_","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
