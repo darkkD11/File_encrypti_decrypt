@@ -16,7 +16,7 @@ const en_US = {
   faq: "FAQ",
   technical_details: "Technical-Details",
   changelog: "Changelog",
-  donation_message: "Love hat.sh? You can donate to support the project.",
+  donation_message: "Love File Encryption & Decryption? You can donate to support the project.",
 
   // Settings
   settings: "Settings",
@@ -31,7 +31,7 @@ const en_US = {
   reset: "Reset",
   guide: "Guide",
   multiple_tabs_alert: "Multiple tabs alert",
-  multiple_tabs_alert_notice_one: "Looks like that Hat.sh is already open in another window/tab.",
+  multiple_tabs_alert_notice_one: "Looks like that File Encryption & Decryption is already open in another window/tab.",
   multiple_tabs_alert_notice_two: "Please avoid encrypting/decrypting files in different tabs at the same time.",
   understand: "I UNDERSTAND",
 
