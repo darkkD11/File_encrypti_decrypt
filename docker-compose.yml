@@ -2,7 +2,7 @@ version: "3"
 
 services:
   web:
-    image: shdv/hat.sh
+    image: shdv/File_encrypti_decrypt
     build:
       context: ./
       dockerfile: Dockerfile
