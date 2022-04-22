@@ -2,7 +2,7 @@ const en_US = {
   language_name: "English",
   
   // Menu
-  sub_title: "Simple, fast, secure client-side file encryption",
+  sub_title: "Client-side secure file encryption",
   home: "Home",
   about: "About",
 
